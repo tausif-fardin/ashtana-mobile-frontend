@@ -1,1 +1,0 @@
-# ashtana-mobile-frontend
