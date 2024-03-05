@@ -40,7 +40,7 @@ function Bag() {
           }}
         >
           <BottomSheetView style={styles.contentContainer}>
-            <Text style={styles.confirmationText}>Remove From Cart</Text>
+            <Text style={styles.confirmationText}>Remove From Bag</Text>
             <View style={styles.card}>
               <View style={styles.imageContainer}>
                 <Image
