@@ -17,6 +17,8 @@ import Settings from "./src/screens/settings";
 import Bag from "./src/screens/bag";
 import Wishlist from "./src/screens/wishlist";
 import Account from "./src/screens/account";
+import SignInScreen from "./src/screens/signin";
+import SignUpScreen from "./src/screens/signup";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -34,6 +36,28 @@ const MyStack = () => {
         options={{ headerShown: false }}
         name="Bag"
         component={Bag}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const AccountStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Account"
+        component={Account}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="SignIn"
+        component={SignInScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="SignUp"
+        component={SignUpScreen}
       />
     </Stack.Navigator>
   );
@@ -92,8 +116,8 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Account"
-        component={Account}
+        name="AccountStack"
+        component={AccountStack}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <FontAwesome5
@@ -102,6 +126,7 @@ const MyTabs = () => {
               size={24}
             />
           ),
+          title: "User Profile",
         }}
       />
     </Tab.Navigator>

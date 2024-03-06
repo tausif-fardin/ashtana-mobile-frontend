@@ -1,10 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
-function Account() {
+function Account({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Account Screen</Text>
+      <Button
+        title="Sign In"
+        onPress={() => navigation.navigate("SignIn")}
+        style={styles.button}
+      />
     </View>
   );
 }
