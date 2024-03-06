@@ -25,6 +25,56 @@ function Bag() {
   return (
     <View style={styles.container}>
       <BagItemCard toggleDeleteSheetVisibility={toggleDeleteSheetVisibility} />
+      <View style={styles.summaryCard}>
+        <View style={styles.summaryCardItem}>
+          <Text style={{ color: "#404040", fontWeight: "500" }}>Items : </Text>
+          <Text style={{ color: "#404040", fontWeight: "500" }}>5</Text>
+        </View>
+        <View style={styles.summaryCardItem}>
+          <Text style={{ color: "#404040", fontWeight: "500" }}>
+            Delivery Charge :{" "}
+          </Text>
+          <Text style={{ color: "#404040", fontWeight: "500" }}>50</Text>
+        </View>
+        <View style={styles.summaryCardItem}>
+          <Text style={{ color: "#404040", fontWeight: "500" }}>
+            Sub Total :{" "}
+          </Text>
+          <Text style={{ color: "#404040", fontWeight: "500" }}>55</Text>
+        </View>
+        <View
+          style={{
+            borderBottomColor: "black",
+            borderBottomWidth: StyleSheet.hairlineWidth,
+            marginTop: 4,
+            marginBottom: 4,
+          }}
+        />
+        <View style={styles.summaryCardItem}>
+          <Text style={{ color: "#000000", fontSize: 20, fontWeight: "600" }}>
+            Total :{" "}
+          </Text>
+          <Text style={{ color: "#000000", fontSize: 20, fontWeight: "600" }}>
+            $ 60
+          </Text>
+        </View>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          width: "90%",
+        }}
+      >
+        <TouchableOpacity
+          style={styles.checkoutButton}
+          onPress={() => {
+            console.log("Checkout button pressed!.");
+          }}
+        >
+          <Text style={styles.buttonText}>Proceed to checkout</Text>
+        </TouchableOpacity>
+      </View>
 
       {isDeleteSheetVisible && (
         <BottomSheet
@@ -86,8 +136,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "start",
   },
   contentContainer: {
     flex: 1,
@@ -104,6 +154,20 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 20,
   },
+  summaryCard: {
+    flexDirection: "column",
+    width: "90%",
+    paddingVertical: 10,
+    border: 1,
+    borderRadius: 12,
+    backgroundColor: "white",
+  },
+  summaryCardItem: {
+    padding: 5,
+    paddingHorizontal: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -113,6 +177,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 16,
     borderWidth: 1,
+  },
+  checkoutButton: {
+    width: "100%",
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    borderRadius: 32,
+    borderWidth: 1,
+    backgroundColor: "#404040",
   },
   confirmButton: {
     backgroundColor: "black",

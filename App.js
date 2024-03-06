@@ -1,15 +1,22 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import {
+  FontAwesome5,
+  FontAwesome,
+  AntDesign,
+  Ionicons,
+} from "@expo/vector-icons";
 
 import Home from "./src/screens/home";
 import Settings from "./src/screens/settings";
 import Bag from "./src/screens/bag";
+import Wishlist from "./src/screens/wishlist";
+import Account from "./src/screens/account";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -34,13 +41,26 @@ const MyStack = () => {
 
 const MyTabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: "#000000",
+        tabBarInactiveTintColor: "#7f7f7f",
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontWeight: "500",
+        },
+      })}
+    >
       <Tab.Screen
         name="HomeTab"
         component={MyStack}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="home" color={color} size={20} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "home" : "home-outline"}
+              size={24}
+              color={color}
+            />
           ),
           title: "Home",
         }}
@@ -49,8 +69,38 @@ const MyTabs = () => {
         name="Settings"
         component={Settings}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="settings" color={color} size={20} />
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "settings" : "settings-outline"}
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Wishlist"
+        component={Wishlist}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              name={focused ? "heart" : "heart-o"}
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={Account}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome5
+              name={focused ? "user-alt" : "user"}
+              color={color}
+              size={24}
+            />
           ),
         }}
       />

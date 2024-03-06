@@ -58,7 +58,7 @@ function Home() {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <Header />
       <CategoryList />
       <Banner
@@ -81,8 +81,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
 
