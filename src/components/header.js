@@ -5,14 +5,12 @@ import {
   View,
   Text,
   TextInput,
-  Image,
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "@expo/vector-icons/Ionicons";
-import s from "../styles/mainStyle";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 export default function Header(props) {
   const navigation = useNavigation();
@@ -20,63 +18,79 @@ export default function Header(props) {
   const goToBagScreen = () => {
     navigation.navigate("Bag");
   };
+  const goToSigninScreen = () => {
+    navigation.navigate("SignInFromHome");
+  };
+
   return (
     <View style={styles.container}>
-      <View>
-        <Image
-          source={require("../../assets/ashtana_logo.png")}
-          style={styles.tinyLogo}
+      <View style={styles.searchContainer}>
+        <Ionicons name="search-outline" size={24} style={styles.searchIcon} />
+        <TextInput
+          placeholder="Explore"
+          placeholderTextColor="#000000"
+          style={styles.searchInput}
         />
       </View>
-      <View
-        style={[
-          {
-            width: width / 2,
-            backgroundColor: "#FFF",
-            borderWidth: 1,
-            borderColor: "#d4d4d4",
-            borderRadius: 14,
-            height: 40,
-          },
-        ]}
-      >
-        <View style={[s.row, s.pd10]}>
-          <Text>
-            <Icon name="search-outline" size={18} />
-          </Text>
-          <TextInput
-            placeholder="Search for products"
-            style={[s.fl1, s.pdlt10, s.f14]}
-          />
-        </View>
+      <View style={styles.languageContainer}>
+        <Text style={styles.languageText}>English</Text>
       </View>
-      <View style={[s.fl1]}>
-        <TouchableOpacity onPress={goToBagScreen}>
-          <Text style={styles.cartIcon}>
-            <Icon name="bag" size={30} />
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={goToSigninScreen} style={styles.iconContainer}>
+        <AntDesign name="user" size={24} color="black" />
+        <Text style={styles.iconText}>Sign in</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToBagScreen} style={styles.iconContainer}>
+        <AntDesign name="hearto" size={24} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToBagScreen} style={styles.iconContainer}>
+        <Ionicons name="bag-handle-outline" size={26} color="black" />
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    paddingBottom: 6,
+    gap: 10,
+  },
+  searchContainer: {
+    width: width / 3,
+    borderBottomWidth: 2,
+    borderColor: "#000000",
+    height: 40,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    gap: 10,
   },
-  tinyLogo: {
-    width: 100,
-    height: 40,
-    resizeMode: "stretch",
+  searchIcon: {
+    fontWeight: "bold",
+    paddingHorizontal: 4,
   },
-  cartIcon: {
+  searchInput: {
+    flex: 1,
+    color: "#000000",
+    fontWeight: "bold",
     textAlign: "center",
+    paddingVertical: 12,
+  },
+  languageContainer: {
+    borderWidth: 2,
+    borderRadius: 4,
+    padding: 2,
+  },
+  languageText: {
+    fontWeight: "500",
+  },
+  iconContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  iconText: {
+    fontWeight: "500",
   },
 });
