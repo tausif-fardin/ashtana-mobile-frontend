@@ -5,11 +5,6 @@ function Account({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Account Screen</Text>
-      <Button
-        title="Sign In"
-        onPress={() => navigation.navigate("SignIn")}
-        style={styles.button}
-      />
     </View>
   );
 }
