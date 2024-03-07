@@ -1,16 +1,11 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { StyleSheet, SafeAreaView } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {
-  FontAwesome5,
-  FontAwesome,
-  AntDesign,
-  Ionicons,
-} from "@expo/vector-icons";
+import { FontAwesome5, FontAwesome, Ionicons } from "@expo/vector-icons";
 
 import Home from "./src/screens/home";
 import Settings from "./src/screens/settings";
@@ -30,6 +25,16 @@ const MyStack = () => {
         options={{ headerShown: false }}
         name="Home"
         component={Home}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="SignInFromHome"
+        component={SignInScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="SignUpFromHome"
+        component={SignUpScreen}
       />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen
