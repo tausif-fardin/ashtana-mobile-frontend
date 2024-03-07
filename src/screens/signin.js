@@ -21,7 +21,7 @@ const SignInScreen = ({ navigation }) => {
     }
   };
   const handleRegister = async () => {
-    navigation.navigate("SignUp");
+    navigation.navigate("SignUpFromHome");
   };
 
   return (
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: 200,
     height: 100,
-    resizeMode: "strech",
+    resizeMode: "contain",
     marginBottom: 20,
   },
   input: {
