@@ -4,17 +4,18 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  Dimensions,
   View,
   Text,
   ScrollView,
 } from "react-native";
 import s from "../styles/mainStyle.js";
 import ProductMini from "./productmini";
-
+const { width, height } = Dimensions.get("window");
 const Preview = (props) => {
   return (
-    <View style={[s.fl1, s.pdtp20, s.pdlt10, s.mgbt20]}>
-      <View style={{ alignSelf: "flex-start" }}>
+    <View style={[s.fl1, s.pdtp20, s.mgbt20]}>
+      <View style={styles.titleContainer}>
         <Text style={styles.title}>{props.title}</Text>
       </View>
       <ScrollView
@@ -44,13 +45,20 @@ const Preview = (props) => {
 };
 
 const styles = StyleSheet.create({
+  titleContainer: {
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+    overflow: "hidden",
+    alignSelf: "flex-start",
+
+    backgroundColor: "black",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
   title: {
-    paddingHorizontal: 6,
-    paddingVertical: 4,
-    fontSize: 18,
-    fontWeight: "700",
-    borderWidth: 1,
-    borderRadius: 16,
+    fontWeight: "600",
+    color: "white",
+    fontSize: 16,
   },
 });
 
