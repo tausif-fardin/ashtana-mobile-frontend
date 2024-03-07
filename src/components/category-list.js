@@ -24,14 +24,16 @@ export default function CategoryList() {
       {categories &&
         categories?.map((category, index) => (
           <View style={styles.subContainer} key={index}>
-            <Image source={category.imageSource} style={styles.tinyImage} />
+            <View style={styles.imageContainer}>
+              <Image source={category.imageSource} style={styles.tinyImage} />
+            </View>
             <Text style={styles.imageTitle}>{category.title}</Text>
           </View>
         ))}
     </View>
   );
 }
-
+const imageSize = 70;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -48,18 +50,24 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  tinyImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+  imageContainer: {
+    width: 80,
+    height: 80,
     borderWidth: 2,
+    borderColor: "black",
+    borderRadius: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  tinyImage: {
+    width: 74,
+    height: 74,
+    borderRadius: 37,
     resizeMode: "stretch",
   },
   imageTitle: {
     textAlign: "center",
     fontWeight: "500",
-  },
-  cartIcon: {
-    textAlign: "center",
   },
 });
