@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Image, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign, FontAwesome6 } from "@expo/vector-icons";
-import s from "../styles/mainStyle.js";
+import { Colors } from "../styles/colors.js";
 
 const ProductMini = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -37,14 +37,14 @@ const ProductMini = (props) => {
     <View style={[styles.container, props.productStyle]}>
       <View style={styles.imageContainer}>
         <TouchableOpacity style={styles.vrIcon}>
-          <FontAwesome6 name="vr-cardboard" size={24} color="black" />
+          <FontAwesome6 name="vr-cardboard" size={24} color={Colors.black} />
         </TouchableOpacity>
         <Image source={{ uri: props.product.image }} style={styles.image} />
         <TouchableOpacity style={styles.heartIcon} onPress={toggleLike}>
           <AntDesign
             name={isLiked ? "heart" : "hearto"}
             size={24}
-            color="black"
+            color={Colors.black}
           />
         </TouchableOpacity>
       </View>
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 10,
     paddingVertical: 16,
+    borderColor: Colors.black1,
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 2,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: Colors.black1,
     zIndex: 1,
   },
   heartIcon: {
@@ -137,7 +138,6 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   option: {
-    backgroundColor: "black",
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderWidth: 2,
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontWeight: "500",
-    color: "black",
+    color: Colors.black,
   },
 });
 
