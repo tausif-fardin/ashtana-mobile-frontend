@@ -5,12 +5,15 @@ import {
   ScrollView,
   Text,
   StyleSheet,
+  RefreshControl,
 } from "react-native";
 import Header from "../components/header";
 import Banner from "../components/banner";
 import CategoryList from "../components/category-list";
 import Preview from "../components/horizontal-preview";
 import getApi from "../../api/getApi";
+import TrendingSection from "../components/trend-section";
+import VPreview from "../components/vertical-preview";
 
 function Home() {
   const [product, setProduct] = useState([
@@ -30,7 +33,7 @@ function Home() {
   ]);
   const [allproduct, setAllProduct] = useState([]);
   const [isLoading, setisLoading] = useState(true);
-
+  const [refreshing, setRefreshing] = useState(false);
   const getProduct = (url) => {
     getApi(
       `https://fakestoreapi.com/products/category/men's clothing?limit=5`,
@@ -39,40 +42,58 @@ function Home() {
       .then((json) => {
         //setProduct(json)
         setisLoading(false);
+        setRefreshing(false);
       })
-      .catch((e) => setisLoading(false));
+      .catch((e) => {
+        setisLoading(false);
+        setRefreshing(false);
+      });
   };
 
   const getAllProduct = () => {
     getApi(`https://fakestoreapi.com/products/?limit=15`, "GET")
       .then((json) => {
         setAllProduct(json);
+        setRefreshing(false);
         setisLoading(false);
       })
-      .catch((e) => setisLoading(false));
+      .catch((e) => {
+        setisLoading(false);
+        setRefreshing(false);
+      });
   };
-
+  const onRefresh = () => {
+    setRefreshing(true);
+    getProduct();
+    getAllProduct();
+  };
   useEffect(() => {
     getProduct();
     getAllProduct();
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <Header />
       <CategoryList />
-      <Banner
+      <TrendingSection />
+      {/* <Banner
         width="100%"
         height={150}
         image="https://previews.123rf.com/images/kchung/kchung1909/kchung190900083/130601427-sunscreen-product-banner-ads-on-orange-square-podium-and-paper-art-background-in-3d-illustration.jpg"
-      />
-      <Preview title="Top Trends" products={product} />
+      /> */}
+      <Preview title="Hot Offers" products={product} />
       <Banner
         width="100%"
         height={150}
         image="https://image.freepik.com/free-vector/mega-sale-offers-modern-promotional-banner_501916-61.jpg"
       />
-      <Preview title="Popular Collection" products={product} />
+      <VPreview title="Popular Collection" products={allproduct} />
     </ScrollView>
   );
 }
