@@ -21,7 +21,7 @@ const trending = [
 const TrendingCard = ({ imageSource, title }) => (
   <View style={styles.subContainer}>
     <View style={styles.imageContainer}>
-      <Image source={imageSource} style={styles.tinyImage} />
+      <Image source={imageSource} style={styles.tinyImage} resizeMode="cover" />
     </View>
   </View>
 );
@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: {
-    width: width / 2.5,
-    height: height / 3.5,
+    width: width / 3,
+    height: height / 5,
     borderWidth: 2,
     borderColor: "black",
     borderRadius: 20,
@@ -69,10 +69,10 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   tinyImage: {
-    width: width / 2.5,
-    height: height / 3.5,
+    flex: 1,
+    height: height / 5,
+    width: width / 3,
     borderRadius: 20,
-    resizeMode: "stretch",
   },
   imageTitle: {
     textAlign: "center",

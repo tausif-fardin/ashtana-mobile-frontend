@@ -53,8 +53,9 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 80,
     height: 80,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "black",
+    borderStyle: "dashed",
     borderRadius: 40,
     justifyContent: "center",
     alignItems: "center",

@@ -43,7 +43,7 @@ export default function Header(props) {
         <AntDesign name="hearto" size={24} color="black" />
       </TouchableOpacity>
       <TouchableOpacity onPress={goToBagScreen} style={styles.iconContainer}>
-        <Ionicons name="bag-handle-outline" size={26} color="black" />
+        <Ionicons name="bag-outline" size={26} color="black" />
       </TouchableOpacity>
     </View>
   );
